@@ -91,6 +91,11 @@ class BuildTests(unittest.TestCase):
             self.assertIn("Direct download", picker)
             self.assertIn("not validated on SteamOS", picker)
 
+            guard = (out / "tools" / "releaseguard.html").read_text(encoding="utf-8")
+            self.assertIn("ReleaseGuard-0.1.0-alpha-win64.zip", guard)
+            self.assertIn("no Python needed", guard)
+            self.assertIn("unsigned", guard)
+
             sitemap = (out / "sitemap.xml").read_text(encoding="utf-8")
             self.assertIn("tools/proton-picker.html", sitemap)
             self.assertIn("tools/releaseguard.html", sitemap)

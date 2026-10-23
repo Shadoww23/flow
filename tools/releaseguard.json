@@ -25,27 +25,27 @@
   "docs": "https://github.com/Shadoww23/releaseguard/blob/main/README.md",
   "problems": "https://github.com/Shadoww23/releaseguard/blob/main/docs/PROBLEMS.md",
   "requirements": [
-    "Python 3.10 or newer",
-    "No runtime dependencies",
-    "Game-authored scenario manifests for game-specific save checks"
+    "Windows 10/11 x64: no Python needed",
+    "Linux: Python 3.10 or newer",
+    "A packaged game build; scenarios optional"
   ],
   "before": [
-    "Python 3.10 or newer",
+    "Windows 10/11 x64, or Python 3.10+ on Linux",
     "A packaged game build to scan",
     "Game-authored scenarios if you want save, stability, or timing checks"
   ],
   "steps": [
     {
-      "title": "Download the alpha",
-      "text": "Get the Linux and Windows zip from itch.io or GitHub, then extract it."
+      "title": "Get the app",
+      "text": "Windows: download the win64 zip and extract it. Linux: use the zip or wheel with Python 3.10+."
     },
     {
-      "title": "Run a release check",
-      "text": "Point ReleaseGuard at a packaged build. It writes a JSON report and needs no install step or account."
+      "title": "Point it at a build",
+      "text": "On Windows, double-click ReleaseGuard.exe and paste the build folder. Or run release-check from any terminal."
     },
     {
-      "title": "Add it to CI",
-      "text": "Use release-check with your own scenario manifest to fail builds on save, size, or timing problems."
+      "title": "Review the result",
+      "text": "Reports land in ReleaseGuard-results. Add a scenario manifest for save, stability, or timing checks."
     }
   ],
   "faq": [
@@ -54,16 +54,20 @@
       "a": "Yes. The alpha is free for evaluation and internal use."
     },
     {
+      "q": "Does the Windows app need Python?",
+      "a": "No. The win64 zip contains a self-contained ReleaseGuard.exe. The Linux archive still uses Python 3.10 or newer."
+    },
+    {
+      "q": "Why does Windows warn about the app?",
+      "a": "The alpha executable is unsigned. Verify the SHA-256 on this page, then choose More info and Run anyway."
+    },
+    {
       "q": "Does it need a hosted service or account?",
       "a": "No. It runs entirely on your machine or CI and sends no telemetry."
     },
     {
       "q": "Does it test my real saves?",
       "a": "The bundled examples are synthetic. Real games need a small adapter and their own scenario manifest."
-    },
-    {
-      "q": "Does it run on Windows?",
-      "a": "Yes, on Windows and Linux with Python 3.10 or newer."
     }
   ],
   "limits": [
@@ -103,6 +107,16 @@
     }
   },
   "downloads": [
+    {
+      "label": "Windows app (no Python)",
+      "format": "zip",
+      "url": "https://github.com/Shadoww23/releaseguard/releases/download/v0.1.0-alpha/ReleaseGuard-0.1.0-alpha-win64.zip",
+      "sha256": "025e2c1605964d07ec3624c97d83fad7976249718d4e4eed01e23e64e7561e8f",
+      "size": 8123947,
+      "platforms": [
+        "windows"
+      ]
+    },
     {
       "label": "Linux and Windows archive",
       "format": "zip",
