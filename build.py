@@ -189,6 +189,22 @@ def setup_entry(tool: dict) -> dict | None:
     return entry if entry and is_available(entry) else None
 
 
+def primary_cta(tool: dict) -> tuple[str, str, str]:
+    """Return the URL, data attributes, and label for the main download button."""
+    setup = setup_entry(tool)
+    if setup:
+        url = esc(setup["url"])
+        label = esc(setup.get("label", "Download setup"))
+        itch = esc(tool.get("itch", tool["repo"]))
+        attrs = (
+            f'data-default-href="{url}" data-default-label="{label}" '
+            f'data-linux-href="{url}" data-linux-label="{label}" '
+            f'data-windows-href="{itch}" data-windows-label="Linux only - use itch.io"'
+        )
+        return url, attrs, label
+    return esc(primary_href(tool)), os_download_attrs(tool), "Download for Linux"
+
+
 def primary_download(tool: dict, platform: str) -> dict | None:
     for download in tool.get("downloads", []):
         if download.get("format") in ("tar.gz", "zip") and platform in download.get("platforms", []):
@@ -385,6 +401,12 @@ def tool_card(tool: dict, depth: int = 0) -> str:
         else ""
     )
     checks = "\n".join(f"<li>{esc(item)}</li>" for item in tool.get("checks", [])[:3])
+    url, attrs, label = primary_cta(tool)
+    tiny = (
+        "Alpha. Linux setup app available; SteamOS not validated."
+        if setup_entry(tool)
+        else "Alpha. One-click installers are in progress."
+    )
     return f"""<article class="product {esc(tool.get("accent", ""))}">
   {cover_html}
   <div>
@@ -396,11 +418,11 @@ def tool_card(tool: dict, depth: int = 0) -> str:
 {checks}
     </ul>
     <div class="links">
-      <a class="btn primary os-download" href="{esc(primary_href(tool))}" {os_download_attrs(tool)}>Download for Linux</a>
+      <a class="btn primary os-download" href="{url}" {attrs}>{label}</a>
       <a class="btn" href="{rel}tools/{esc(tool["id"])}.html">Setup guide</a>
       <a class="text" href="{esc(tool["repo"])}">Source ↗</a>
     </div>
-    <p class="tiny">Alpha. One-click installers are in progress.</p>
+    <p class="tiny">{tiny}</p>
   </div>
 </article>"""
 
@@ -411,8 +433,9 @@ def render_index(suite: dict, tools: list[dict]) -> str:
     hero_buttons = []
     if tools:
         first = tools[0]
+        url, attrs, label = primary_cta(first)
         hero_buttons.append(
-            f'<a class="btn primary os-download" href="{esc(primary_href(first))}" {os_download_attrs(first)}>Download for Linux</a>'
+            f'<a class="btn primary os-download" href="{url}" {attrs}>{label}</a>'
         )
     for tool in tools[1:3]:
         hero_buttons.append(

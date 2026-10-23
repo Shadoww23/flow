@@ -82,6 +82,10 @@ class BuildTests(unittest.TestCase):
                 self.assertNotIn("yay -S", text)
                 self.assertNotIn("{{", text)
 
+            index = (out / "index.html").read_text(encoding="utf-8")
+            self.assertIn("ProtonPickerSetup-0.1.0-x86_64.AppImage", index)
+            self.assertIn("SteamOS not validated", index)
+
             picker = (out / "tools" / "proton-picker.html").read_text(encoding="utf-8")
             self.assertIn("Download setup (Linux)", picker)
             self.assertIn("Direct download", picker)
