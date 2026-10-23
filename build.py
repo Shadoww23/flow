@@ -184,6 +184,11 @@ def is_available(entry: dict) -> bool:
     return entry.get("available", True) is not False
 
 
+def setup_entry(tool: dict) -> dict | None:
+    entry = tool.get("install", {}).get("setup")
+    return entry if entry and is_available(entry) else None
+
+
 def primary_download(tool: dict, platform: str) -> dict | None:
     for download in tool.get("downloads", []):
         if download.get("format") in ("tar.gz", "zip") and platform in download.get("platforms", []):
@@ -667,6 +672,22 @@ def render_tool(suite: dict, tool: dict, tools: list[dict]) -> str:
         "publisher": {"@type": "Organization", "name": tool.get("publisher", "Brlinkin")},
     }
 
+    setup = setup_entry(tool)
+    if setup:
+        setup_url = esc(setup["url"])
+        setup_label = esc(setup.get("label", "Download setup"))
+        itch_url = esc(tool.get("itch", tool["repo"]))
+        cta = f"""<a class="btn primary os-download" href="{setup_url}" data-default-href="{setup_url}" data-default-label="{setup_label}" data-linux-href="{setup_url}" data-linux-label="{setup_label}" data-windows-href="{itch_url}" data-windows-label="Linux only - use itch.io">{setup_label}</a>
+      <a class="btn" href="{esc(tool["release_url"])}">Direct download</a>
+      <a class="btn" href="{itch_url}">itch.io</a>
+      <a class="btn" href="{esc(tool["repo"])}">Source</a>"""
+        fineprint = esc(setup.get("note") or "Alpha setup app.")
+    else:
+        cta = f"""<a class="btn primary os-download" href="{esc(primary_href(tool))}" {os_download_attrs(tool)}>Download for Linux</a>
+      <a class="btn" href="{esc(tool.get("itch", tool["repo"]))}">itch.io</a>
+      <a class="btn" href="{esc(tool["repo"])}">Source</a>"""
+        fineprint = "Free alpha · one-click installer in progress"
+
     body = f"""<section class="product-hero">
   <div>
     <a class="back" href="../index.html#tools">← ALL TOOLS</a>
@@ -675,11 +696,9 @@ def render_tool(suite: dict, tool: dict, tools: list[dict]) -> str:
     <p class="tagline">{esc(tool["tagline"])}</p>
     <p class="lede">{esc(tool["description"])}</p>
     <div class="cta">
-      <a class="btn primary os-download" href="{esc(primary_href(tool))}" {os_download_attrs(tool)}>Download for Linux</a>
-      <a class="btn" href="{esc(tool.get("itch", tool["repo"]))}">itch.io</a>
-      <a class="btn" href="{esc(tool["repo"])}">Source</a>
+      {cta}
     </div>
-    <p class="fineprint">Free alpha · one-click installer in progress</p>
+    <p class="fineprint">{fineprint}</p>
     <p class="meta">Version <code>{esc(tool["version"])}</code> · {pill(tool.get("status", "alpha"))} · {esc(tool["license"])}</p>
     {latest_html}
   </div>

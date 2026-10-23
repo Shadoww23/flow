@@ -29,23 +29,23 @@
     "At least one Proton build installed in Steam"
   ],
   "before": [
-    "Desktop Linux with Steam installed",
+    "Native Steam installed (Flatpak Steam is not supported yet)",
     "Python 3.10 or newer available",
     "At least one Proton version installed in Steam",
-    "Steam closed before you run setup"
+    "Save any running game before setup closes Steam"
   ],
   "steps": [
     {
-      "title": "Download the alpha",
-      "text": "Get the Linux archive from itch.io or GitHub. Keep the extracted folder somewhere you can find it."
+      "title": "Download the setup app",
+      "text": "Get the AppImage from GitHub and allow it to run (right-click, Properties, Permissions)."
     },
     {
-      "title": "Run the setup once",
-      "text": "With Steam closed, run install.sh in the folder. Setup backs up your Steam config before changing anything. This is the step a one-click installer will replace next."
+      "title": "Run setup and follow the window",
+      "text": "It closes Steam with your permission, downloads the official archive, checks its SHA-256, and installs for your user. No administrator password."
     },
     {
-      "title": "Restart Steam and play",
-      "text": "Open Steam again and press Play as usual. Proton Picker routes each game to the chosen Proton build."
+      "title": "Start Steam and play",
+      "text": "Open Steam again and press Play as usual. The setup window can start Steam for you."
     }
   ],
   "faq": [
@@ -60,6 +60,10 @@
     {
       "q": "Does it work on Steam Deck?",
       "a": "Not validated yet. A read-only Decky status panel exists for sideload testing, but it has not run on a physical Deck; use desktop Steam for the supported alpha setup."
+    },
+    {
+      "q": "Do I need to use the terminal?",
+      "a": "No on desktop Linux: download the AppImage setup app and double-click it. On SteamOS the installer is not validated yet; the read-only Decky panel is the current Deck path."
     },
     {
       "q": "How do I undo it?",
@@ -98,6 +102,12 @@
       "label": "Steam Deck (sideload)",
       "url": "https://github.com/Shadoww23/proton-picker-decky/releases/latest",
       "note": "Read-only status panel for Decky. Unvalidated on SteamOS; install the ZIP in Decky Developer mode.",
+      "available": true
+    },
+    "setup": {
+      "label": "Download setup (Linux)",
+      "url": "https://github.com/Shadoww23/proton-picker-installer/releases/latest",
+      "note": "AppImage setup for Linux desktops. Alpha; not validated on SteamOS. It downloads and verifies this official archive.",
       "available": true
     }
   },

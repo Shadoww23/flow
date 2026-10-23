@@ -82,6 +82,11 @@ class BuildTests(unittest.TestCase):
                 self.assertNotIn("yay -S", text)
                 self.assertNotIn("{{", text)
 
+            picker = (out / "tools" / "proton-picker.html").read_text(encoding="utf-8")
+            self.assertIn("Download setup (Linux)", picker)
+            self.assertIn("Direct download", picker)
+            self.assertIn("not validated on SteamOS", picker)
+
             sitemap = (out / "sitemap.xml").read_text(encoding="utf-8")
             self.assertIn("tools/proton-picker.html", sitemap)
             self.assertIn("tools/releaseguard.html", sitemap)

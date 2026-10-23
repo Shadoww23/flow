@@ -10,7 +10,7 @@
   "issues": "https://github.com/Shadoww23/flow/issues",
   "roadmap": [
     "Decky status panel: SteamOS validation (sideload alpha available)",
-    "One-click Linux installers: .deb, .rpm, AppImage (in progress)",
+    "Linux setup app: SteamOS validation and .deb/.rpm (AppImage alpha available)",
     "Windows .exe for ReleaseGuard (planned)",
     "AUR packages (planned)"
   ],
