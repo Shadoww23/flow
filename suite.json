@@ -11,7 +11,7 @@
   "roadmap": [
     "Decky status panel: SteamOS validation (sideload alpha available)",
     "Linux setup app: SteamOS validation and .deb/.rpm (AppImage alpha available)",
-    "Windows .exe for ReleaseGuard (planned)",
+    "ReleaseGuard Windows app: signed build and GUI (unsigned .exe available)",
     "AUR packages (planned)"
   ],
   "tools": [
