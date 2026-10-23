@@ -84,6 +84,13 @@
       "format": "zip",
       "available": true
     },
+    "scoop": {
+      "label": "Scoop (Windows)",
+      "command": "scoop bucket add brlinkin https://github.com/Shadoww23/scoop-brlinkin; scoop install brlinkin/releaseguard",
+      "url": "https://github.com/Shadoww23/scoop-brlinkin",
+      "note": "Portable Windows app installed from the official release ZIP.",
+      "available": true
+    },
     "aur": {
       "label": "Arch / AUR",
       "package": "releaseguard",

@@ -95,6 +95,7 @@ class BuildTests(unittest.TestCase):
             self.assertIn("ReleaseGuard-0.1.0-alpha-win64.zip", guard)
             self.assertIn("no Python needed", guard)
             self.assertIn("unsigned", guard)
+            self.assertIn("scoop install brlinkin/releaseguard", guard)
 
             sitemap = (out / "sitemap.xml").read_text(encoding="utf-8")
             self.assertIn("tools/proton-picker.html", sitemap)
