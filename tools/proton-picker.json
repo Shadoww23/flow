@@ -1,0 +1,163 @@
+{
+  "id": "proton-picker",
+  "name": "Proton Picker",
+  "publisher": "Brlinkin",
+  "tagline": "The right Proton build for every game, chosen at launch.",
+  "description": "Steam normally applies one global Proton choice or forces you to edit a per-game setting. Proton Picker sits at the launch point, reads the app ID, and starts a pinned build, a strongly supported build, or the newest installed official Proton. It keeps working when a games drive disappears.",
+  "category": [
+    "linux",
+    "steam",
+    "proton"
+  ],
+  "audience": "players",
+  "platforms": [
+    "linux"
+  ],
+  "status": "alpha",
+  "version": "0.1.0-alpha",
+  "license": "Proprietary freeware, no redistribution",
+  "license_url": "https://github.com/Shadoww23/proton-picker/blob/main/LICENSE",
+  "repo": "https://github.com/Shadoww23/proton-picker",
+  "releases": "https://github.com/Shadoww23/proton-picker/releases",
+  "release_url": "https://github.com/Shadoww23/proton-picker/releases/tag/v0.1.0-alpha",
+  "itch": "https://brlinkin.itch.io/proton-picker",
+  "docs": "https://github.com/Shadoww23/proton-picker/blob/main/README.md",
+  "problems": "https://github.com/Shadoww23/proton-picker/blob/main/docs/PROBLEMS.md",
+  "requirements": [
+    "Linux desktop Steam (Steam Deck/Decky and Flatpak Steam are not yet validated)",
+    "Python 3.10 or newer",
+    "At least one Proton build installed in Steam"
+  ],
+  "before": [
+    "Desktop Linux with Steam installed",
+    "Python 3.10 or newer available",
+    "At least one Proton version installed in Steam",
+    "Steam closed before you run setup"
+  ],
+  "steps": [
+    {
+      "title": "Download the alpha",
+      "text": "Get the Linux archive from itch.io or GitHub. Keep the extracted folder somewhere you can find it."
+    },
+    {
+      "title": "Run the setup once",
+      "text": "With Steam closed, run install.sh in the folder. Setup backs up your Steam config before changing anything. This is the step a one-click installer will replace next."
+    },
+    {
+      "title": "Restart Steam and play",
+      "text": "Open Steam again and press Play as usual. Proton Picker routes each game to the chosen Proton build."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is it free?",
+      "a": "Yes. The alpha is free; donations are optional."
+    },
+    {
+      "q": "Will it touch my saves?",
+      "a": "No. It changes which Proton build Steam launches and backs up Steam's config before editing it."
+    },
+    {
+      "q": "Does it work on Steam Deck?",
+      "a": "Not validated yet. Use desktop Steam for now; a Decky plugin is planned."
+    },
+    {
+      "q": "How do I undo it?",
+      "a": "Run uninstall.py with Steam closed. It restores your previous global choice and any per-game overrides removed during setup."
+    }
+  ],
+  "limits": [
+    "Steam's launch handoff is verified, but a full session into gameplay was not completed.",
+    "Recommendations depend on one public report mirror; sparse coverage falls back to the newest official Proton.",
+    "The updater only routes to Proton builds that are already installed.",
+    "Removing per-game overrides is recorded and restorable, but backups are still your responsibility."
+  ],
+  "install": {
+    "archive": {
+      "label": "Linux archive",
+      "url": "https://github.com/Shadoww23/proton-picker/releases/download/v0.1.0-alpha/ProtonPicker-0.1.0-alpha.tar.gz",
+      "sha256": "8f447834972d6b7719fd86d70181f27c4d6104c8f750b60eaec1bc7ec48ad5b1",
+      "format": "tar.gz",
+      "available": true
+    },
+    "aur": {
+      "label": "Arch / AUR",
+      "package": "proton-picker",
+      "command": "yay -S proton-picker",
+      "url": "https://aur.archlinux.org/packages/proton-picker",
+      "note": "Recipe is prepared but not published yet. It will verify and install the official archive, not mirror it.",
+      "available": false
+    },
+    "itch": {
+      "label": "itch.io",
+      "url": "https://brlinkin.itch.io/proton-picker",
+      "note": "Direct download from the Brlinkin page.",
+      "available": true
+    }
+  },
+  "downloads": [
+    {
+      "label": "Linux archive",
+      "format": "tar.gz",
+      "url": "https://github.com/Shadoww23/proton-picker/releases/download/v0.1.0-alpha/ProtonPicker-0.1.0-alpha.tar.gz",
+      "sha256": "8f447834972d6b7719fd86d70181f27c4d6104c8f750b60eaec1bc7ec48ad5b1",
+      "size": 29256,
+      "platforms": [
+        "linux"
+      ]
+    },
+    {
+      "label": "Zip archive",
+      "format": "zip",
+      "url": "https://github.com/Shadoww23/proton-picker/releases/download/v0.1.0-alpha/ProtonPicker-0.1.0-alpha.zip",
+      "sha256": "2f65d77982ed54443d936ddf0050f99812c2a3d1dc943bfe6c3947f9c1ea9e2e",
+      "size": 33589,
+      "platforms": [
+        "linux"
+      ]
+    },
+    {
+      "label": "Checksums",
+      "format": "txt",
+      "url": "https://github.com/Shadoww23/proton-picker/releases/download/v0.1.0-alpha/ProtonPicker-0.1.0-alpha-SHA256SUMS.txt",
+      "platforms": [
+        "linux"
+      ]
+    }
+  ],
+  "entries": {
+    "setup": "install.py",
+    "dashboard": "app.py",
+    "uninstall": "uninstall.py"
+  },
+  "default_entry": "dashboard",
+  "checks": [
+    "Stop hunting through Steam Play settings for every game.",
+    "Pin a build per game without creating Steam overrides.",
+    "Survive missing builds and unmounted game drives.",
+    "Remove stale per-game overrides with a backup and restore path."
+  ],
+  "problems_cards": [
+    {
+      "title": "Why does Steam use the same Proton version for every game?",
+      "text": "How the picker replaces the global choice and routes each app ID at launch.",
+      "url": "https://github.com/Shadoww23/proton-picker/blob/main/docs/PROBLEMS.md#steam-uses-the-same-proton-version-for-every-game"
+    },
+    {
+      "title": "Why do my Steam per-game Proton overrides disappear?",
+      "text": "Steam rewrites its config. Keep pins outside Steam and restore removed mappings later.",
+      "url": "https://github.com/Shadoww23/proton-picker/blob/main/docs/PROBLEMS.md#a-per-game-proton-override-is-being-ignored-or-keeps-disappearing"
+    },
+    {
+      "title": "Why did my game stop launching after a drive was unmounted?",
+      "text": "Ranked fallbacks and a last-resort scan instead of one hard-coded Proton path.",
+      "url": "https://github.com/Shadoww23/proton-picker/blob/main/docs/PROBLEMS.md#the-game-stopped-launching-after-an-external-drive-was-unmounted"
+    }
+  ],
+  "assets": {
+    "cover": "assets/proton-picker-cover.png",
+    "icon": "assets/proton-picker-icon.png",
+    "screenshot": "assets/proton-picker-dashboard.png"
+  },
+  "accent": "teal"
+}

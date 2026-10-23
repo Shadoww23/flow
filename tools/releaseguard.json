@@ -1,0 +1,171 @@
+{
+  "id": "releaseguard",
+  "name": "ReleaseGuard",
+  "publisher": "Brlinkin",
+  "tagline": "One release-readiness gate for game builds.",
+  "description": "ReleaseGuard combines trusted game-authored scenarios with packaged-build review. Test interrupted save writes, verify recovery behavior, collect logs, enforce step-duration budgets, and fail CI on size growth or development leftovers, without a hosted service.",
+  "category": [
+    "game-development",
+    "ci",
+    "save-safety"
+  ],
+  "audience": "teams",
+  "platforms": [
+    "linux",
+    "windows"
+  ],
+  "status": "alpha",
+  "version": "0.1.0-alpha",
+  "license": "Proprietary freeware, no redistribution",
+  "license_url": "https://github.com/Shadoww23/releaseguard/blob/main/LICENSE",
+  "repo": "https://github.com/Shadoww23/releaseguard",
+  "releases": "https://github.com/Shadoww23/releaseguard/releases",
+  "release_url": "https://github.com/Shadoww23/releaseguard/releases/tag/v0.1.0-alpha",
+  "itch": "https://brlinkin.itch.io/releaseguard",
+  "docs": "https://github.com/Shadoww23/releaseguard/blob/main/README.md",
+  "problems": "https://github.com/Shadoww23/releaseguard/blob/main/docs/PROBLEMS.md",
+  "requirements": [
+    "Python 3.10 or newer",
+    "No runtime dependencies",
+    "Game-authored scenario manifests for game-specific save checks"
+  ],
+  "before": [
+    "Python 3.10 or newer",
+    "A packaged game build to scan",
+    "Game-authored scenarios if you want save, stability, or timing checks"
+  ],
+  "steps": [
+    {
+      "title": "Download the alpha",
+      "text": "Get the Linux and Windows zip from itch.io or GitHub, then extract it."
+    },
+    {
+      "title": "Run a release check",
+      "text": "Point ReleaseGuard at a packaged build. It writes a JSON report and needs no install step or account."
+    },
+    {
+      "title": "Add it to CI",
+      "text": "Use release-check with your own scenario manifest to fail builds on save, size, or timing problems."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is it free?",
+      "a": "Yes. The alpha is free for evaluation and internal use."
+    },
+    {
+      "q": "Does it need a hosted service or account?",
+      "a": "No. It runs entirely on your machine or CI and sends no telemetry."
+    },
+    {
+      "q": "Does it test my real saves?",
+      "a": "The bundled examples are synthetic. Real games need a small adapter and their own scenario manifest."
+    },
+    {
+      "q": "Does it run on Windows?",
+      "a": "Yes, on Windows and Linux with Python 3.10 or newer."
+    }
+  ],
+  "limits": [
+    "This is an early alpha, not a drop-in engine plugin.",
+    "Save checks need a game-specific adapter; the bundled examples are synthetic.",
+    "Stability and timing checks are test hooks and budgets, not crash diagnosis or profiling.",
+    "Packaged-build review does not modify or optimize the build."
+  ],
+  "install": {
+    "archive": {
+      "label": "Zip archive",
+      "url": "https://github.com/Shadoww23/releaseguard/releases/download/v0.1.0-alpha/ReleaseGuard-0.1.0-alpha.zip",
+      "sha256": "6deb7c659c4021fa12e26d5ae6a9042d5f2fe9abe70fa2df4c93458ab7158805",
+      "format": "zip",
+      "available": true
+    },
+    "aur": {
+      "label": "Arch / AUR",
+      "package": "releaseguard",
+      "command": "yay -S releaseguard",
+      "url": "https://aur.archlinux.org/packages/releaseguard",
+      "note": "Recipe is prepared but not published yet. It will verify and install the official archive, not mirror it.",
+      "available": false
+    },
+    "pipx": {
+      "label": "pipx (wheel)",
+      "command": "pipx install https://github.com/Shadoww23/releaseguard/releases/download/v0.1.0-alpha/releaseguard_local-0.1.0-py3-none-any.whl",
+      "url": "https://github.com/Shadoww23/releaseguard/releases/download/v0.1.0-alpha/releaseguard_local-0.1.0-py3-none-any.whl",
+      "note": "Installs your own published wheel, not a third-party mirror.",
+      "available": true
+    },
+    "itch": {
+      "label": "itch.io (Linux + Windows)",
+      "url": "https://brlinkin.itch.io/releaseguard",
+      "note": "Direct download from the Brlinkin page.",
+      "available": true
+    }
+  },
+  "downloads": [
+    {
+      "label": "Linux and Windows archive",
+      "format": "zip",
+      "url": "https://github.com/Shadoww23/releaseguard/releases/download/v0.1.0-alpha/ReleaseGuard-0.1.0-alpha.zip",
+      "sha256": "6deb7c659c4021fa12e26d5ae6a9042d5f2fe9abe70fa2df4c93458ab7158805",
+      "size": 38314,
+      "platforms": [
+        "linux",
+        "windows"
+      ]
+    },
+    {
+      "label": "Python wheel",
+      "format": "whl",
+      "url": "https://github.com/Shadoww23/releaseguard/releases/download/v0.1.0-alpha/releaseguard_local-0.1.0-py3-none-any.whl",
+      "sha256": "a80f8a33a97a6b046932ef4ece84a8c9f444ad205070877512f84fc24b798024",
+      "size": 20725,
+      "platforms": [
+        "linux",
+        "windows"
+      ]
+    },
+    {
+      "label": "Checksums",
+      "format": "txt",
+      "url": "https://github.com/Shadoww23/releaseguard/releases/download/v0.1.0-alpha/ReleaseGuard-0.1.0-alpha-SHA256SUMS.txt",
+      "platforms": [
+        "linux",
+        "windows"
+      ]
+    }
+  ],
+  "entries": {
+    "cli": "releaseguard.py"
+  },
+  "default_entry": "cli",
+  "checks": [
+    "Test whether an interrupted save write corrupts progress.",
+    "Gate releases on save, stability, timing, and packaging checks.",
+    "Detect oversized builds, duplicates, and shipped dev files.",
+    "Run on Windows and Linux with Python 3.10+."
+  ],
+  "problems_cards": [
+    {
+      "title": "How do I test whether an interrupted save write corrupts a save?",
+      "text": "Run a disposable scenario that interrupts a write and checks recovery.",
+      "url": "https://github.com/Shadoww23/releaseguard/blob/main/docs/PROBLEMS.md#how-do-i-test-whether-an-interrupted-save-write-corrupts-a-save"
+    },
+    {
+      "title": "How do I add a game save-integrity check to CI?",
+      "text": "Use release-check with your own trusted manifest and exit codes.",
+      "url": "https://github.com/Shadoww23/releaseguard/blob/main/docs/PROBLEMS.md#how-do-i-add-save-integrity-checks-to-ci"
+    },
+    {
+      "title": "How do I catch oversized builds and shipped dev files?",
+      "text": "Inventory a packaged build, compare a baseline, and flag review candidates.",
+      "url": "https://github.com/Shadoww23/releaseguard/blob/main/docs/PROBLEMS.md#how-do-i-catch-oversized-game-builds-and-development-leftovers"
+    }
+  ],
+  "assets": {
+    "cover": "assets/releaseguard-cover.png",
+    "icon": "assets/releaseguard-icon.png",
+    "screenshot": "assets/releaseguard-release-check.png"
+  },
+  "accent": "orange"
+}

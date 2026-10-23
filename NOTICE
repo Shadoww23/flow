@@ -1,0 +1,12 @@
+Flow
+
+The MIT license in LICENSE applies to the Flow hub code: the site generator,
+the `flow` CLI, tests, and the site markup and styles.
+
+It does not apply to the Brlinkin tools or their download archives. Proton
+Picker and ReleaseGuard remain proprietary freeware under their own licenses
+(no redistribution, no modification). Tool cover art, icons, and screenshots
+in assets/ are copyright Brlinkin and are used here to describe those tools.
+
+Links in this repository point at the official release archives. Flow does not
+mirror, patch, or rebundle those archives.

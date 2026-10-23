@@ -1,0 +1,21 @@
+{
+  "name": "Flow",
+  "publisher": "Brlinkin",
+  "tagline": "Tools for Steam games and game releases.",
+  "description": "Flow is the home for Brlinkin tools: small apps that fix one specific problem with Steam games or game releases. No accounts, no telemetry, no hosted service. Find a tool, download the alpha, and follow the setup steps.",
+  "url": "https://shadoww23.github.io/flow/",
+  "repo": "https://github.com/Shadoww23/flow",
+  "github": "https://github.com/Shadoww23",
+  "itch": "https://brlinkin.itch.io/",
+  "issues": "https://github.com/Shadoww23/flow/issues",
+  "roadmap": [
+    "Decky plugin for Steam Deck (in progress)",
+    "One-click Linux installers: .deb, .rpm, AppImage (in progress)",
+    "Windows .exe for ReleaseGuard (planned)",
+    "AUR packages (planned)"
+  ],
+  "tools": [
+    "proton-picker",
+    "releaseguard"
+  ]
+}
