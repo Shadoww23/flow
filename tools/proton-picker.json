@@ -106,8 +106,8 @@
     },
     "setup": {
       "label": "Download setup (Linux)",
-      "url": "https://github.com/Shadoww23/proton-picker-installer/releases/latest",
-      "note": "AppImage setup for Linux desktops. Alpha; not validated on SteamOS. It downloads and verifies this official archive.",
+      "url": "https://github.com/Shadoww23/proton-picker-installer/releases/download/v0.1.0/ProtonPickerSetup-0.1.0-x86_64.AppImage",
+      "note": "10 MB AppImage setup for Linux desktops. Alpha; not validated on SteamOS. It downloads and verifies this official archive.",
       "available": true
     }
   },
