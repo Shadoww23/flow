@@ -36,12 +36,12 @@
   ],
   "steps": [
     {
-      "title": "Download the setup app",
-      "text": "Get the AppImage from GitHub and allow it to run (right-click, Properties, Permissions)."
+      "title": "Get the setup app",
+      "text": "Use the AppImage (allow it to run from Properties, Permissions) or install the .deb/.rpm package, then open Proton Picker Setup."
     },
     {
       "title": "Run setup and follow the window",
-      "text": "It closes Steam with your permission, downloads the official archive, checks its SHA-256, and installs for your user. No administrator password."
+      "text": "After installing the app, setup itself needs no administrator password. It closes Steam with your permission, downloads the official archive, and checks its SHA-256."
     },
     {
       "title": "Start Steam and play",
@@ -109,9 +109,41 @@
       "url": "https://github.com/Shadoww23/proton-picker-installer/releases/download/v0.1.1/ProtonPickerSetup-0.1.1-x86_64.AppImage",
       "note": "10 MB AppImage setup for Linux desktops. Allow it to run after download (Properties, Permissions). Alpha; not validated on SteamOS. It downloads and verifies this official archive.",
       "available": true
+    },
+    "deb": {
+      "label": "Debian / Ubuntu (.deb)",
+      "url": "https://github.com/Shadoww23/proton-picker-installer/releases/download/v0.1.1/proton-picker-setup_0.1.1-1_amd64.deb",
+      "note": "Download, then run: sudo apt install ./proton-picker-setup_0.1.1-1_amd64.deb",
+      "available": true
+    },
+    "rpm": {
+      "label": "Fedora (.rpm)",
+      "url": "https://github.com/Shadoww23/proton-picker-installer/releases/download/v0.1.1/proton-picker-setup-0.1.1-1.x86_64.rpm",
+      "note": "Download, then run: sudo dnf install ./proton-picker-setup-0.1.1-1.x86_64.rpm",
+      "available": true
     }
   },
   "downloads": [
+    {
+      "label": "Debian/Ubuntu package",
+      "format": "deb",
+      "url": "https://github.com/Shadoww23/proton-picker-installer/releases/download/v0.1.1/proton-picker-setup_0.1.1-1_amd64.deb",
+      "sha256": "15d68702a0a807426c714f27a35c6e4ea4890782aaecfd2ce98530a1cb416ea7",
+      "size": 87358,
+      "platforms": [
+        "linux"
+      ]
+    },
+    {
+      "label": "Fedora package",
+      "format": "rpm",
+      "url": "https://github.com/Shadoww23/proton-picker-installer/releases/download/v0.1.1/proton-picker-setup-0.1.1-1.x86_64.rpm",
+      "sha256": "24fb30512a0fdefb06dbd91a1921806521bd5d163f5e894e08a1761c269220ce",
+      "size": 94269,
+      "platforms": [
+        "linux"
+      ]
+    },
     {
       "label": "Linux archive",
       "format": "tar.gz",

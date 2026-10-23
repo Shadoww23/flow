@@ -39,7 +39,7 @@ REQUIRED_TOOL = (
 )
 
 STATUS_LABEL = {"alpha": "Alpha", "beta": "Beta", "stable": "Stable"}
-FORMAT_LABEL = {"tar.gz": "tar.gz", "zip": "zip", "whl": "wheel", "txt": "checksums"}
+FORMAT_LABEL = {"tar.gz": "tar.gz", "zip": "zip", "whl": "wheel", "txt": "checksums", "deb": "Debian package", "rpm": "RPM package"}
 PLATFORM_LABEL = {
     "linux": "Linux",
     "windows": "Windows",

@@ -90,6 +90,8 @@ class BuildTests(unittest.TestCase):
             self.assertIn("Download setup (Linux)", picker)
             self.assertIn("Direct download", picker)
             self.assertIn("not validated on SteamOS", picker)
+            self.assertIn("proton-picker-setup_0.1.1-1_amd64.deb", picker)
+            self.assertIn("proton-picker-setup-0.1.1-1.x86_64.rpm", picker)
 
             guard = (out / "tools" / "releaseguard.html").read_text(encoding="utf-8")
             self.assertIn("ReleaseGuard-0.1.0-alpha-win64.zip", guard)
