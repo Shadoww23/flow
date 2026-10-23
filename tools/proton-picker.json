@@ -59,7 +59,7 @@
     },
     {
       "q": "Does it work on Steam Deck?",
-      "a": "Not validated yet. Use desktop Steam for now; a Decky plugin is planned."
+      "a": "Not validated yet. A read-only Decky status panel exists for sideload testing, but it has not run on a physical Deck; use desktop Steam for the supported alpha setup."
     },
     {
       "q": "How do I undo it?",
@@ -92,6 +92,12 @@
       "label": "itch.io",
       "url": "https://brlinkin.itch.io/proton-picker",
       "note": "Direct download from the Brlinkin page.",
+      "available": true
+    },
+    "decky": {
+      "label": "Steam Deck (sideload)",
+      "url": "https://github.com/Shadoww23/proton-picker-decky/releases/latest",
+      "note": "Read-only status panel for Decky. Unvalidated on SteamOS; install the ZIP in Decky Developer mode.",
       "available": true
     }
   },

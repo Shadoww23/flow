@@ -9,7 +9,7 @@
   "itch": "https://brlinkin.itch.io/",
   "issues": "https://github.com/Shadoww23/flow/issues",
   "roadmap": [
-    "Decky plugin for Steam Deck (in progress)",
+    "Decky status panel: SteamOS validation (sideload alpha available)",
     "One-click Linux installers: .deb, .rpm, AppImage (in progress)",
     "Windows .exe for ReleaseGuard (planned)",
     "AUR packages (planned)"
